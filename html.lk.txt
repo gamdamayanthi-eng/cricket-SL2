@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cricket Lions | World Cricket Updates</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #07110d;
+    color: white;
+}
+
+/* NAVBAR */
+header {
+    background: #091810;
+    border-bottom: 1px solid #193426;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #18d96b;
+}
+
+.logo small {
+    display: block;
+    font-size: 9px;
+    color: #91a99b;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #18d96b;
+}
+
+/* HERO */
+.hero {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 80% 30%, rgba(24,217,107,.18), transparent 35%),
+        linear-gradient(135deg, #07110d, #0c2115);
+}
+
+.hero-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background: rgba(24,217,107,.1);
+    border: 1px solid rgba(24,217,107,.3);
+    color: #7df5ae;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 70px;
+    line-height: 1;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #18d96b;
+}
+
+.hero p {
+    color: #9fb3a7;
+    font-size: 17px;
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 13px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.primary {
+    background: #18d96b;
+    color: #031108;
+}
+
+.secondary {
+    border: 1px solid #284936;
+    color: white;
+}
+
+/* SCORE CARD */
+.score-card {
+    background: #0d1c15;
+    border: 1px solid #1c3828;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    color: #91a99b;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.live {
+    color: #ff5965;
+    font-weight: bold;
+}
+
+.team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #1c3828;
+}
+
+.team-name {
+    font-weight: bold;
+}
+
+.score {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.score small {
+    color: #91a99b;
+}
+
+.score-note {
+    color: #91a99b;
+    font-size: 12px;
+    margin-top: 18px;
+}
+
+/* SECTIONS */
+section {
+    padding: 70px 5%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+}
+
+.section-title p {
+    color: #91a99b;
+    margin-top: 5px;
+}
+
+/* NEWS */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.news-card {
+    background: #0d1c15;
+    border: 1px solid #1c3828;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    border-color: #18d96b;
+}
+
+.news-image {
+    height: 190px;
+    background: linear-gradient(135deg, #123b24, #07110d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.tag {
+    color: #7df5ae;
+    background: rgba(24,217,107,.1);
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.news-content h3 {
+    margin: 12px 0;
+    font-size: 18px;
+}
+
+.news-content p {
+    color: #91a99b;
+    font-size: 13px;
+}
+
+/* MATCHES */
+.matches {
+    background: #09150f;
+}
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.match {
+    background: #0d1c15;
+    border: 1px solid #1c3828;
+    border-radius: 15px;
+    padding: 22px;
+}
+
+.match-top {
+    display: flex;
+    justify-content: space-between;
+    color: #91a99b;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.team-box {
+    width: 40%;
+    font-weight: bold;
+}
+
+.flag {
+    font-size: 38px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.vs {
+    color: #91a99b;
+    font-size: 12px;
+}
+
+/* RANKINGS */
+.table-box {
+    overflow-x: auto;
+    background: #0d1c15;
+    border: 1px solid #1c3828;
+    border-radius: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #1c3828;
+}
+
+th {
+    color: #91a99b;
+    font-size: 12px;
+}
+
+td {
+    font-size: 14px;
+}
+
+.rating {
+    color: #18d96b;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid #193426;
+    padding: 30px 5%;
+    color: #91a99b;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social a {
+    color: #91a99b;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.social a:hover {
+    color: #18d96b;
+}
+
+/* MOBILE */
+@media(max-width: 800px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+CRICKET <span>LIONS</span>
+<small>WORLD CRICKET UPDATES</small>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#news">News</a>
+<a href="#matches">Matches</a>
+<a href="#scores">Scores</a>
+<a href="#rankings">Rankings</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-container">
+
+<div>
+
+<span class="badge">
+● WORLD CRICKET UPDATES
+</span>
+
+<h1>
+Cricket News.<br>
+<span>All In One Place.</span>
+</h1>
+
+<p>
+Stay connected with the latest cricket news,
+match updates, scores, rankings and stories
+from around the world.
+</p>
+
+<div class="buttons">
+
+<a href="#news" class="btn primary">
+Explore Latest News →
+</a>
+
+<a href="#matches" class="btn secondary">
+View Matches
+</a>
+
+</div>
+
+</div>
+
+
+<!-- LIVE SCORE -->
+
+<div class="score-card" id="scores">
+
+<div class="score-header">
+<span>INTERNATIONAL</span>
+<span class="live">● LIVE</span>
+</div>
+
+<div class="team">
+
+<span class="team-name">
+🇱🇰 Sri Lanka
+</span>
+
+<span class="score">
+184 <small>/ 6</small>
+</span>
+
+</div>
+
+<div class="team">
+
+<span class="team-name">
+🇮🇳 India
+</span>
+
+<span class="score">
+176 <small>/ 8</small>
+</span>
+
+</div>
+
+<div class="score-note">
+Sri Lanka won by 8 runs • 20.0 overs
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NEWS -->
+
+<section id="news">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Latest Cricket News</h2>
+
+<p>
+Latest stories from the cricket world
+</p>
+
+</div>
+
+
+<div class="news-grid">
+
+
+<div class="news-card">
+
+<div class="news-image">
+🏏
+</div>
+
+<div class="news-content">
+
+<span class="tag">
+INTERNATIONAL
+</span>
+
+<h3>
+Big match excitement builds as teams prepare for another cricket battle
+</h3>
+
+<p>
+Get the latest team news, match information
+and cricket updates.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-image">
+🏆
+</div>
+
+<div class="news-content">
+
+<span class="tag">
+TOURNAMENT
+</span>
+
+<h3>
+Championship race heats up as every match becomes crucial
+</h3>
+
+<p>
+Follow tournament developments, results
+and important moments.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-image">
+⭐
+</div>
+
+<div class="news-content">
+
+<span class="tag">
+PLAYERS
+</span>
+
+<h3>
+Top performers make headlines after another memorable performance
+</h3>
+
+<p>
+Discover the players creating the biggest
+moments on the field.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MATCHES -->
+
+<section class="matches" id="matches">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Upcoming Matches</h2>
+
+<p>
+Keep track of the next big games.
+</p>
+
+</div>
+
+
+<div class="match-grid">
+
+
+<div class="match">
+
+<div class="match-top">
+
+<span>ODI • 1st Match</span>
+
+<span>Tomorrow • 10:00 AM</span>
+
+</div>
+
+
+<div class="teams">
+
+<div class="team-box">
+
+<span class="flag">🇱🇰</span>
+
+Sri Lanka
+
+</div>
+
+<div class="vs">
+VS
+</div>
+
+<div class="team-box">
+
+<span class="flag">🇦🇺</span>
+
+Australia
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="match">
+
+<div class="match-top">
+
+<span>T20 • 2nd Match</span>
+
+<span>Tomorrow • 7:30 PM</span>
+
+</div>
+
+
+<div class="teams">
+
+<div class="team-box">
+
+<span class="flag">🇮🇳</span>
+
+India
+
+</div>
+
+<div class="vs">
+VS
+</div>
+
+<div class="team-box">
+
+<span class="flag">🇿🇦</span>
+
+South Africa
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RANKINGS -->
+
+<section id="rankings">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Team Rankings</h2>
+
+<p>
+Cricket team ranking table
+</p>
+
+</div>
+
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+<th>Team</th>
+<th>Matches</th>
+<th>Points</th>
+<th>Rating</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr>
+
+<td>1</td>
+<td>🇮🇳 India</td>
+<td>32</td>
+<td>4120</td>
+<td class="rating">129</td>
+
+</tr>
+
+
+<tr>
+
+<td>2</td>
+<td>🇦🇺 Australia</td>
+<td>30</td>
+<td>3790</td>
+<td class="rating">126</td>
+
+</tr>
+
+
+<tr>
+
+<td>3</td>
+<td>🇿🇦 South Africa</td>
+<td>29</td>
+<td>3510</td>
+<td class="rating">121</td>
+
+</tr>
+
+
+<tr>
+
+<td>4</td>
+<td>🇱🇰 Sri Lanka</td>
+<td>28</td>
+<td>3220</td>
+<td class="rating">115</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+© 2026 <strong>Cricket Lions</strong>
+<br>
+World Cricket Updates
+</div>
+
+<div class="social">
+
+<a href="#">Facebook</a>
+
+<a href="#">YouTube</a>
+
+<a href="#">Instagram</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
